@@ -44,9 +44,11 @@ $data_dir       = '/var/local/squirrelmail/data/';
 $attachment_dir = '/var/local/squirrelmail/attach/';
 
 /**
- * Allow configtest from within the Docker network
+ * Disallow remote configtest access.
+ * Must remain false for public-route safety.
+ * Use docker compose exec for local diagnostics.
  */
-$allow_remote_configtest = true;
+$allow_remote_configtest = false;
 
 /**
  * Debug mode — simple for DevBox

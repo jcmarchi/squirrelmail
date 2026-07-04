@@ -40,3 +40,10 @@ Runtime started  : true
 Route status     : pending
 Caddy status     : pending
 Completed at     : 2026-07-04
+
+## Route finalization result
+
+- Completed at    : 2026-07-04T06:37:24Z
+- Upstream status : http-302
+- Route status    : http-000
+- Caddy status    : reloaded

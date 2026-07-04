@@ -19,3 +19,12 @@ Route host resolved: squirrelmail.qlidemo.com
 
 Caddy route must be registered through the DevBox registry and regenerated
 via the route-sync script. Do not manually edit generated Caddy files.
+
+## Route finalization
+
+- Completed at : 2026-07-04T06:37:24Z
+- Host         : squirrelmail.qlidemo.com
+- Upstream     : http://127.0.0.1:20110
+- Registry     : /srv/dev/registry/projects/squirrelmail.project
+- Caddy file   : /srv/dev/reverse-proxy/sites/squirrelmail.generated.caddy
+- Caddy status : reloaded
