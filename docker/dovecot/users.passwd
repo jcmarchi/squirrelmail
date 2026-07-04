@@ -1,0 +1,6 @@
+# DevBox test IMAP users (plain text passwords for local testing only)
+# Format: user:{PLAIN}password:uid:gid::home
+# NOT for production use.
+
+testuser:{PLAIN}testpass::::::
+devbox:{PLAIN}devbox::::::

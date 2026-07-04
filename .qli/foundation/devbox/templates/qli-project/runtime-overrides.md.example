@@ -1,0 +1,76 @@
+# Runtime Overrides — Example Template
+# Copy this file to .qli/project/runtime-overrides.md in the managed project.
+# Replace all placeholder text. Do not leave placeholder text in a completed file.
+# This file is safe to commit to project version control. Do not include secrets.
+
+# Runtime Overrides
+
+Project: `<PROJECT_SLUG>`
+Recorded: `<DATE>`
+
+---
+
+## Native project defaults discovered
+
+<!-- List the project's native default ports, hostnames, bind addresses, and other
+     runtime values found in README.md, docker-compose.yml, .env.example, or equivalent.
+     Do not include secrets or credentials. -->
+
+| Service | Native default port | Source file |
+|---|---|---|
+| App | <!-- e.g. 3000 --> | <!-- e.g. docker-compose.yml --> |
+| API | <!-- e.g. 8000 --> | <!-- e.g. .env.example --> |
+| Database | <!-- e.g. 5432 --> | <!-- e.g. docker-compose.yml --> |
+
+---
+
+## DevBox assigned overrides
+
+<!-- List the DevBox-assigned values that replace the native defaults.
+     Reference port-block.env for port numbers. -->
+
+| Service | DevBox-assigned port variable | Resolves from port-block.env |
+|---|---|---|
+| App | `QLI_APP_PORT` | Yes |
+| API | `QLI_API_PORT` | Yes |
+| Database | `QLI_DB_PORT` | Yes |
+
+---
+
+## Override mechanism used
+
+<!-- State which mechanism was used. Check all that apply. -->
+
+- [ ] `.env` file with DevBox-assigned values
+- [ ] `docker-compose.override.yml`
+- [ ] Runtime flags
+- [ ] Source code changes (last resort only — justification required below)
+
+---
+
+## Files created or modified
+
+<!-- List each file created or modified as part of the override process. -->
+
+| File | Action | Notes |
+|---|---|---|
+| `.qli/project/port-block.env` | Created | DevBox port block values |
+| `docker-compose.override.yml` | Created | Port and bind-address overrides |
+
+---
+
+## Source-code changes required
+
+<!-- yes / no -->
+
+no
+
+---
+
+## Justification (if source changes were required)
+
+<!-- If source-code changes were required, explain why non-invasive override options
+     were insufficient, what operator approval was obtained, and what was changed.
+     Leave blank if no source-code changes were made. -->
+
+N/A
