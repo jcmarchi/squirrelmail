@@ -104,10 +104,11 @@ Rationale in section 8.
 
 | Pass | Description |
 |---|---|
-| Fixture injection tooling | Script to seed Dovecot maildirs with test `.eml` files |
-| Local delivery harness | Script/service to relay Mailpit-captured messages to Dovecot |
-| Acceptance test matrix execution | Run the full matrix from section 10 |
-| Fixture reset tooling | Script to clean/reset maildirs between test runs |
+| Pass 1 — Fixture and reset baseline | Deterministic fixture injection tooling with reset/reseed. Seed known `.eml` messages into Dovecot maildirs. Prove read/regression messages are repeatable. |
+| Pass 2 — Local delivery harness | DevBox-only standalone script (not a long-running service, not production mail infrastructure, not publicly exposed). Relay Mailpit-captured messages into target Dovecot maildir. Prove testuser → devbox and devbox → testuser reply. |
+| Pass 3 — Full mail acceptance matrix | Execute the full 16-test matrix from section 10. Update smoke/evidence. Declare baseline ready or blocked. |
+
+**Total**: 3 implementation passes after this decision.
 
 ## 10. Acceptance Test Matrix
 
@@ -161,6 +162,10 @@ Rationale in section 8.
 
 | Metric | Target | Current |
 |---|---|---|
+| Decision pass | PR #9 | ✅ |
+| Estimated remaining passes | 3 | |
+| Estimated remaining prompts | 6 normal, up to 8 with corrections | |
+| Milestone readiness | planned, not implemented | |
 | Repeatable login test | < 5s curl | ✅ |
 | Repeatable compose/send test | < 30s manual | ✅ (capture only) |
 | Repeatable receive test | < 10s | ❌ (no delivery) |
