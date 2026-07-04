@@ -21,32 +21,32 @@ foundations:
     applicability: spine_required
     reason: "All Buildline projects require construction doctrine."
   uiux:
-    applicability: blocked
-    reason: "Unset until project surfaces are classified."
+    applicability: deferred
+    reason: "Frameset-based UI. Defer modernization until after Spine."
   data:
-    applicability: blocked
-    reason: "Unset until persistence needs are classified."
+    applicability: minimum_required
+    reason: "File-based preferences, address books, attachments, DevBox data volumes, and config-driven storage paths must be mapped now. Database migration remains deferred."
   api:
-    applicability: blocked
-    reason: "Unset until interface surfaces are classified."
+    applicability: not_applicable
+    reason: "No API surface. Internal PHP application with direct IMAP/SMTP communication."
   acl:
-    applicability: blocked
-    reason: "Unset until user/protection model is classified."
+    applicability: minimum_required
+    reason: "Anonymous login surfaces, authenticated mailbox routes, admin/configtest surfaces, plugin surfaces, session/referrer protections, and access-sensitive file/attachment behavior must be mapped now. New ACL implementation remains deferred."
   security:
     applicability: minimum_required
-    reason: "All projects require at least baseline security posture."
+    reason: "Production security posture required per operating profile."
   testing:
     applicability: minimum_required
-    reason: "All projects require honest validation evidence."
+    reason: "No automated tests exist. Smoke and characterization tests needed before any modernization."
   runtime:
-    applicability: blocked
-    reason: "Unset until runtime model is classified."
+    applicability: required
+    reason: "DevBox runtime baseline established (PR #1). PHP 8.3 Apache + Dovecot + Mailpit."
   observability:
-    applicability: blocked
-    reason: "Unset until deployment/runtime surfaces are classified."
+    applicability: deferred
+    reason: "Baseline observability. Defer structured logging/monitoring until after Spine."
   delivery:
-    applicability: minimum_required
-    reason: "All projects need setup/start/delivery posture."
+    applicability: required
+    reason: "Docker Compose delivery via DevBox. Start/stop/smoke documented in DEVBOX.md."
   devbox:
     applicability: required
     reason: "Project runs inside QLi DevBox. DevBox integration is required."

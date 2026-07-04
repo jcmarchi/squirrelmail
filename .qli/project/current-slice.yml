@@ -1,25 +1,35 @@
-slice_id: "[slice-id]"
-title: "[Human-readable slice title]"
-mode: "foundation-spine | feature | hardening | bugfix"
-objective: "[What product or foundation capability this slice delivers]"
+slice_id: "adoption-intake-001"
+title: "SquirrelMail QLi Buildline Adoption Intake"
+mode: "foundation-spine"
+objective: "Perform read-only discovery of the SquirrelMail codebase and populate Buildline adoption files: adoption-intake.md, behavior-snapshot.md, risk-map.md. Update foundation applicability and status based on discovery evidence."
 approved_scope:
-  include: []
-  exclude: []
+  include:
+    - ".qli/project/adoption-intake.md"
+    - ".qli/project/behavior-snapshot.md"
+    - ".qli/project/risk-map.md"
+    - ".qli/project/foundation-applicability.yml"
+    - ".qli/project/foundation-status.yml"
+    - ".qli/project/evidence-log.md"
+    - ".qli/project/current-slice.yml"
+    - ".qli/project/context-packet.yml"
+  exclude:
+    - "src/**"
+    - "functions/**"
+    - "class/**"
+    - "plugins/**"
+    - "themes/**"
+    - "config/**"
+    - "include/**"
+    - "docker/**"
+    - "docker-compose.yml"
+    - "DEVBOX.md"
+    - "devbox-setup.sh"
 triggered_foundations:
   - acd
-  - uiux
-  - data
-  - api
-  - acl
-  - testing
-  - security
 expected_evidence:
-  core: "[expected domain/use-case evidence or n/a]"
-  data: "[expected data/migration evidence or n/a]"
-  api: "[expected endpoint/contract evidence or n/a]"
-  ui: "[expected screen/demo/human smoke evidence or n/a]"
-  acl: "[expected permission/policy evidence or n/a]"
-  tests: "[expected focused tests/smoke evidence]"
-  docs: "[expected docs/status updates]"
-risk_level: "low | medium | high | critical"
-validation_tier: "tier1-static | tier2-focused | tier3-smoke | tier4-full-regression"
+  core: "Architecture discovery complete. Entry points, initialization, auth, IMAP, SMTP, MIME, preferences, plugins, templates, i18n documented."
+  ui: "Behavior snapshot documents all user-facing flows."
+  tests: "n/a — read-only discovery pass"
+  docs: "adoption-intake.md, behavior-snapshot.md, risk-map.md created."
+risk_level: "low"
+validation_tier: "tier1-static"
