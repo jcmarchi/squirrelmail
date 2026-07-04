@@ -1,0 +1,114 @@
+buildline_version: "2.0-new-project-baseline"
+name: "QLi Buildline"
+tagline: "A foundation-driven system for predictable AI-assisted software construction."
+canonical_root: ".qli"
+docs_policy: "Do not create Foundation source files under docs/. Use docs/ for product-facing documentation, ADRs, notes, manuals, and runbooks derived from implementation."
+
+layers:
+  buildline_manifest: ".qli/buildline.yml"
+  agents_integration: ".qli/agents"
+  binding: ".qli/binding"
+  project_state: ".qli/project"
+  spine: ".qli/spine"
+  workflows: ".qli/workflows"
+  gates: ".qli/gates"
+  evidence: ".qli/evidence"
+  tools: ".qli/tools"
+
+foundations:
+  acd:
+    name: "Application Construction Doctrine"
+    reference: ".qli/acd/specs/application-construction-doctrine.md"
+    implementation_control: ".qli/acd/specs/acd-implementation-control.md"
+    adapter: ".qli/acd/specs/domain-adapter.md"
+  uiux:
+    name: "UI/UX Foundation"
+    reference: ".qli/uiux/specs/ui-foundation-reference.md"
+    implementation_control: ".qli/uiux/specs/ui-implementation-control.md"
+    adapter: ".qli/uiux/specs/ui-adapter.md"
+    inventories: [".qli/uiux/specs/ui-component-inventory.md", ".qli/uiux/specs/ui-demo-checklist.md"]
+  data:
+    name: "DATA Foundation"
+    reference: ".qli/data/specs/data-foundation-reference.md"
+    implementation_control: ".qli/data/specs/data-implementation-control.md"
+    adapter: ".qli/data/specs/data-adapter.md"
+  api:
+    name: "API Foundation"
+    reference: ".qli/api/specs/api-foundation-reference.md"
+    implementation_control: ".qli/api/specs/api-implementation-control.md"
+    adapter: ".qli/api/specs/api-adapter.md"
+  acl:
+    name: "Access Control Foundation"
+    reference: ".qli/acl/specs/access-control-reference.md"
+    implementation_control: ".qli/acl/specs/acl-implementation-control.md"
+    mapping: ".qli/acl/specs/access-control-mapping.md"
+  security:
+    name: "Security Foundation"
+    reference: ".qli/security/specs/security-foundation-reference.md"
+    implementation_control: ".qli/security/specs/security-implementation-control.md"
+    posture: ".qli/security/specs/security-posture.md"
+  testing:
+    name: "Testing / Quality Foundation"
+    reference: ".qli/test/specs/testing-foundation-reference.md"
+    implementation_control: ".qli/test/specs/testing-implementation-control.md"
+    adapter: ".qli/test/specs/testing-adapter.md"
+  runtime:
+    name: "Runtime Operations Foundation"
+    reference: ".qli/rof/specs/runtime-foundation-reference.md"
+    implementation_control: ".qli/rof/specs/runtime-implementation-control.md"
+    adapter: ".qli/rof/specs/runtime-adapter.md"
+  observability:
+    name: "Observability / Audit / Telemetry Foundation"
+    reference: ".qli/oat/specs/observability-foundation-reference.md"
+    implementation_control: ".qli/oat/specs/observability-implementation-control.md"
+    adapter: ".qli/oat/specs/observability-adapter.md"
+  delivery:
+    name: "Delivery / DevOps / Deployment Foundation"
+    reference: ".qli/deployment/specs/delivery-foundation-reference.md"
+    implementation_control: ".qli/deployment/specs/delivery-implementation-control.md"
+    adapter: ".qli/deployment/specs/delivery-adapter.md"
+  devbox:
+    name: "QLi DevBox Foundation"
+    reference: ".qli/devbox/README.md"
+    implementation_control: ".qli/devbox/devbox-implementation-control.md"
+    manifest: ".qli/devbox/MANIFEST.md"
+
+trigger_map:
+  always_start:
+    read:
+      - ".qli/buildline.yml"
+      - ".qli/project/manifest.yml"
+      - ".qli/project/operating-profile.yml"
+      - ".qli/project/foundation-target.yml"
+      - ".qli/project/foundation-applicability.yml"
+      - ".qli/project/foundation-status.yml"
+      - ".qli/binding/agent-context-loading-rules.md"
+  project_binding:
+    read:
+      - ".qli/binding/project-classifier.md"
+      - ".qli/binding/project-profile.schema.yml"
+      - ".qli/binding/foundation-applicability-rules.yml"
+      - ".qli/binding/foundation-target-levels.yml"
+      - ".qli/binding/deferral-rules.md"
+  spine:
+    read: [".qli/spine/README.md", ".qli/spine/spine-checklist.md"]
+  ui:
+    read: [".qli/uiux/specs/ui-foundation-reference.md", ".qli/uiux/specs/ui-implementation-control.md", ".qli/uiux/specs/ui-adapter.md", ".qli/uiux/specs/ui-component-inventory.md", ".qli/uiux/specs/ui-demo-checklist.md"]
+  api:
+    read: [".qli/api/specs/api-foundation-reference.md", ".qli/api/specs/api-implementation-control.md", ".qli/api/specs/api-adapter.md", ".qli/api/specs/api-contract-inventory.md", ".qli/api/specs/api-endpoint-inventory.md"]
+  acl:
+    read: [".qli/acl/specs/access-control-reference.md", ".qli/acl/specs/acl-implementation-control.md", ".qli/acl/specs/access-control-mapping.md", ".qli/acl/specs/access-control-route-inventory.md", ".qli/acl/specs/access-control-test-matrix.md"]
+  data:
+    read: [".qli/data/specs/data-foundation-reference.md", ".qli/data/specs/data-implementation-control.md", ".qli/data/specs/data-adapter.md", ".qli/data/specs/data-entity-inventory.md", ".qli/data/specs/data-storage-decision-matrix.md"]
+  security:
+    read: [".qli/security/specs/security-foundation-reference.md", ".qli/security/specs/security-implementation-control.md", ".qli/security/specs/security-posture.md", ".qli/security/specs/security-trigger-matrix.md"]
+  testing:
+    read: [".qli/test/specs/testing-foundation-reference.md", ".qli/test/specs/testing-implementation-control.md", ".qli/test/specs/testing-adapter.md", ".qli/test/specs/testing-smoke-checklist.md", ".qli/test/specs/testing-regression-matrix.md"]
+  runtime:
+    read: [".qli/rof/specs/runtime-foundation-reference.md", ".qli/rof/specs/runtime-implementation-control.md", ".qli/rof/specs/runtime-adapter.md"]
+  observability:
+    read: [".qli/oat/specs/observability-foundation-reference.md", ".qli/oat/specs/observability-implementation-control.md", ".qli/oat/specs/observability-adapter.md"]
+  delivery:
+    read: [".qli/deployment/specs/delivery-foundation-reference.md", ".qli/deployment/specs/delivery-implementation-control.md", ".qli/deployment/specs/delivery-adapter.md"]
+  devbox:
+    read: [".qli/devbox/README.md", ".qli/devbox/devbox-implementation-control.md", ".qli/devbox/MANIFEST.md"]

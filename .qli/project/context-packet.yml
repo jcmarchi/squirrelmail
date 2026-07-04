@@ -1,0 +1,51 @@
+schema: qli-buildline-context-packet-v1
+status: draft
+session:
+  mode: "new-project | active-development | hardening | audit | maintenance"
+  pass_or_slice: ""
+  objective: ""
+context:
+  must_read:
+    - "AGENTS.md"
+    - "QLI.md"
+    - ".qli/buildline.yml"
+    - ".qli/project/manifest.yml"
+    - ".qli/project/operating-profile.yml"
+    - ".qli/project/foundation-target.yml"
+    - ".qli/project/foundation-applicability.yml"
+    - ".qli/project/foundation-status.yml"
+    - ".qli/project/current-slice.yml"
+  read_if_triggered:
+    - ".qli/foundation-map.yml"
+    - ".qli/binding/agent-context-loading-rules.md"
+    - ".qli/workflows/"
+    - ".qli/gates/"
+    - "applicable foundation implementation-control files"
+  do_not_read_by_default:
+    - "all historical reports"
+    - "all manuals"
+    - "unrelated foundation references"
+    - "deprecated prompts"
+scope:
+  in_scope: []
+  out_of_scope: []
+  files_not_to_touch: []
+foundations:
+  triggered: []
+  explicitly_not_applicable: []
+validation:
+  tier: "targeted"
+  required_gates:
+    - ".qli/gates/foundation-gate.md"
+    - ".qli/gates/slice-definition-of-done.md"
+  human_smoke_required: "profile_triggered"
+evidence:
+  status_files_to_update:
+    - ".qli/project/foundation-status.yml"
+    - ".qli/project/evidence-log.md"
+    - ".qli/project/deferral-register.md"
+  report_template: ".qli/evidence/implementation-report-template.md"
+stop_conditions:
+  binding_stops_apply: true
+  acl_security_data_stops_apply: true
+notes: []

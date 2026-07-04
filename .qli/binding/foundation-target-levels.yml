@@ -1,0 +1,40 @@
+version: "2.0"
+name: "QLi Buildline Foundation Target Levels"
+
+target_levels:
+  spine:
+    purpose: "Establish the minimum upfront structure needed to avoid predictable technical debt."
+    required_outputs:
+      - ".qli/project/manifest.yml"
+      - ".qli/project/operating-profile.yml"
+      - ".qli/project/foundation-applicability.yml"
+      - ".qli/project/foundation-status.yml"
+      - ".qli/project/deferral-register.md"
+      - "UI/API/Data/ACL/Security/Testing baselines as applicable"
+    acceptable_deferrals: "advanced capabilities only"
+  mvp:
+    purpose: "Deliver reviewable product slices with real UI/API/Data/ACL/Test evidence where applicable."
+    required_outputs:
+      - "foundation spine"
+      - "first real vertical slice"
+      - "human smoke path"
+      - "focused automated tests"
+      - "evidence report"
+  production:
+    purpose: "Prepare the product for persistent users, real data, deployability, observability, and safer operations."
+    required_outputs:
+      - "MVP outputs"
+      - "security posture"
+      - "operational health checks"
+      - "release readiness gate"
+      - "backup/migration posture where applicable"
+  enterprise:
+    purpose: "Support higher accountability, compliance, admin control, auditability, access governance, and operational resilience."
+    required_outputs:
+      - "production outputs"
+      - "expanded ACL/audit/security evidence"
+      - "operator/support visibility"
+      - "documented exception and deferral review cadence"
+
+selection_rule: >
+  Choose the lowest target level that honestly supports the product stage and risk. Do not select a low target level to avoid necessary controls.

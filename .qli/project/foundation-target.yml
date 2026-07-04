@@ -1,0 +1,35 @@
+target_level: "spine"
+
+levels:
+  spine:
+    purpose: "Prevent early technical debt while keeping the project moving."
+    required:
+      - "UI shell or equivalent human-review surface when user-facing."
+      - "API/interface pattern if the product exposes or consumes application behavior."
+      - "DATA classification and storage convention for persistent state."
+      - "ACL spine when users, tenants, admin areas, privileged routes, files, billing, integrations, or public exposure exist."
+      - "Security baseline from operating profile and feature triggers."
+      - "Testing adapter, smoke path, and focused validation command."
+      - "Delivery/runtime profile and local/devbox start/smoke instructions."
+      - "Basic observability: safe errors, logs, health/status where applicable."
+  mvp:
+    extends: "spine"
+    required:
+      - "First real vertical product slice."
+      - "Seed/demo data sufficient for human review."
+      - "Positive and negative ACL/security tests for protected behavior."
+      - "API/data compatibility notes."
+  production:
+    extends: "mvp"
+    required:
+      - "Backup/restore and migration/rollback procedures."
+      - "Production-safe config/secrets handling."
+      - "Broader regression matrix."
+      - "Operational health and audit coverage for critical flows."
+  enterprise:
+    extends: "production"
+    required:
+      - "Strong tenant/scope isolation proof."
+      - "Formal audit/event inventory and access review model."
+      - "Advanced security controls triggered by product risk."
+      - "Release gates, runbooks, incident diagnostics, and compliance-ready evidence."

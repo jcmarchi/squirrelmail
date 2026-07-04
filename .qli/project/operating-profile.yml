@@ -1,0 +1,22 @@
+profile_version: "2.0"
+project_name: "[Project Name]"
+product_stage: "idea | prototype | mvp | production | enterprise"
+distribution_model: "single-tenant | multi-tenant-saas | self-hosted | desktop | mobile | library | hybrid"
+deployment_target: "local | qli-devbox | shared-hosting | vps | docker | kubernetes | cloud-managed | unknown"
+public_exposure: "none | private-network | authenticated-public | public-read | public-write | mixed"
+identity_model: "none | local-users | external-idp | sso | api-tokens | service-accounts | mixed"
+tenancy_model: "none | account | organization | workspace | project | custom"
+data_sensitivity: "public | internal | confidential | regulated | mixed"
+runtime_model: "request-response | scheduled-jobs | queues-workers | event-driven | realtime | mixed"
+ui_review_model: "screens-required | api-only | cli-only | library-only"
+api_model: "none | internal | public | partner | mixed"
+acl_required: "yes | no | profile-triggered"
+security_posture: "minimal | baseline | production | regulated | enterprise"
+observability_posture: "minimal | baseline | production | enterprise"
+backup_restore_required: "yes | no | later"
+devbox_integration: "required | optional | not-used"
+
+notes:
+  assumptions: []
+  explicit_non_goals: []
+  approved_deferrals: []

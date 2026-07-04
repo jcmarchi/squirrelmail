@@ -1,0 +1,25 @@
+foundation_status_version: "2.0"
+project_mode: "new_project"
+current_target_level: "unset" # spine | mvp | production | enterprise
+current_slice: "unset"
+
+status_values:
+  allowed: [not_started, partial, implemented, deferred, not_applicable, blocked]
+
+foundations:
+  acd: {status: not_started, evidence: [], gaps: []}
+  uiux: {status: not_started, evidence: [], gaps: []}
+  data: {status: not_started, evidence: [], gaps: []}
+  api: {status: not_started, evidence: [], gaps: []}
+  acl: {status: not_started, evidence: [], gaps: []}
+  security: {status: not_started, evidence: [], gaps: []}
+  testing: {status: not_started, evidence: [], gaps: []}
+  runtime: {status: not_started, evidence: [], gaps: []}
+  observability: {status: not_started, evidence: [], gaps: []}
+  delivery: {status: not_started, evidence: [], gaps: []}
+  devbox: {status: not_started, evidence: [], gaps: []}
+
+last_gate:
+  result: unset
+  date: unset
+  summary: unset

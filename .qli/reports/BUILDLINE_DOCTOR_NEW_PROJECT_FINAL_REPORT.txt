@@ -1,0 +1,159 @@
+QLi Buildline Doctor — New Project Baseline
+Root: /mnt/data/skeleton_clean_new
+
+Root instruction files
+OK   AGENTS.md
+OK   QLI.md
+OK   SKILLS.md
+OK   CLAUDE.md
+OK   CODEX.md
+OK   AGENTS.md contains QLI.md reference
+OK   AGENTS.md contains project-specific instruction section
+OK   QLI.md contains QLi Buildline identity
+OK   QLI.md declares new-project baseline
+OK   QLI.md contains foundation applicability state reference
+OK   QLI.md contains doctor command reference
+OK   QLI.md contains skill index reference
+OK   SKILLS.md contains skill index reference
+OK   CLAUDE.md contains QLI.md reference
+OK   CODEX.md contains QLI.md reference
+
+OK   .qli/agents/
+OK   .qli/binding/
+OK   .qli/project/
+OK   .qli/spine/
+OK   .qli/workflows/
+OK   .qli/gates/
+OK   .qli/evidence/
+OK   .qli/prompts/compact/
+OK   .qli/skills/
+OK   .qli/handoff/
+OK   .qli/tools/
+OK   .qli/reports/
+OK   AGENTS.md
+OK   QLI.md
+OK   SKILLS.md
+OK   CLAUDE.md
+OK   CODEX.md
+OK   .qli/buildline.yml
+OK   .qli/README.md
+OK   .qli/BUILDGUIDE.md
+OK   .qli/foundation-map.yml
+OK   .qli/agents/README.md
+OK   .qli/agents/AGENTS.foundation-block.md
+OK   .qli/agents/AGENTS.integration-rules.md
+OK   .qli/agents/AGENTS.generation-template.md
+OK   .qli/agents/AGENTS.prompt-control-block.md
+OK   .qli/skills/README.md
+OK   .qli/skills/skill-index.yml
+OK   .qli/skills/buildline-context-packet/SKILL.md
+OK   .qli/skills/buildline-bind-project/SKILL.md
+OK   .qli/skills/buildline-spine/SKILL.md
+OK   .qli/skills/buildline-vertical-slice/SKILL.md
+OK   .qli/skills/buildline-gate-review/SKILL.md
+OK   .qli/skills/buildline-evidence-report/SKILL.md
+OK   .qli/skills/buildline-doctor-audit/SKILL.md
+OK   .qli/skills/buildline-agent-integration/SKILL.md
+OK   .qli/binding/README.md
+OK   .qli/binding/project-classifier.md
+OK   .qli/binding/project-profile.schema.yml
+OK   .qli/binding/foundation-applicability-algorithm.md
+OK   .qli/binding/foundation-applicability-output-template.yml
+OK   .qli/binding/foundation-applicability-rules.yml
+OK   .qli/binding/foundation-target-levels.yml
+OK   .qli/binding/implementation-priority-rules.md
+OK   .qli/binding/deferral-rules.md
+OK   .qli/binding/agent-context-loading-rules.md
+OK   .qli/binding/context-packet.schema.yml
+OK   .qli/project/manifest.yml
+OK   .qli/project/operating-profile.yml
+OK   .qli/project/foundation-target.yml
+OK   .qli/project/foundation-applicability.yml
+OK   .qli/project/foundation-status.yml
+OK   .qli/project/current-slice.yml
+OK   .qli/project/context-packet.yml
+OK   .qli/project/buildline-plan.md
+OK   .qli/project/prompt-log.md
+OK   .qli/project/evidence-log.md
+OK   .qli/project/deferral-register.md
+OK   .qli/project/skills/.gitkeep
+OK   .qli/spine/README.md
+OK   .qli/spine/spine-checklist.md
+OK   .qli/workflows/new-project-implementation.md
+OK   .qli/workflows/foundation-spine-implementation.md
+OK   .qli/workflows/vertical-slice-protocol.md
+OK   .qli/workflows/controlled-prompt-protocol.md
+OK   .qli/workflows/context-packet-protocol.md
+OK   .qli/workflows/stop-conditions.md
+OK   .qli/workflows/prompt-usage-lifecycle.md
+OK   .qli/gates/foundation-gate.md
+OK   .qli/gates/slice-definition-of-done.md
+OK   .qli/gates/human-smoke-test-gate.md
+OK   .qli/gates/release-readiness-gate.md
+OK   .qli/gates/prompt-readiness-gate.md
+OK   .qli/gates/prompt-completion-gate.md
+OK   .qli/evidence/slice-evidence-template.md
+OK   .qli/evidence/implementation-report-template.md
+OK   .qli/handoff/README.md
+OK   .qli/handoff/NEW_PROJECT_CUSTOMIZATION_GUIDE.md
+OK   .qli/handoff/AI_COARCHITECT_CUSTOMIZATION_PROMPT.md
+OK   .qli/handoff/FIRST_CODING_AGENT_PROMPT_TEMPLATE.md
+OK   .qli/acd/specs/application-construction-doctrine.md
+OK   .qli/acd/specs/acd-implementation-control.md
+OK   .qli/uiux/specs/ui-foundation-reference.md
+OK   .qli/uiux/specs/ui-implementation-control.md
+OK   .qli/data/specs/data-foundation-reference.md
+OK   .qli/data/specs/data-implementation-control.md
+OK   .qli/api/specs/api-foundation-reference.md
+OK   .qli/api/specs/api-implementation-control.md
+OK   .qli/acl/specs/access-control-reference.md
+OK   .qli/acl/specs/acl-implementation-control.md
+OK   .qli/security/specs/security-foundation-reference.md
+OK   .qli/security/specs/security-implementation-control.md
+OK   .qli/test/specs/testing-foundation-reference.md
+OK   .qli/test/specs/testing-implementation-control.md
+OK   .qli/rof/specs/runtime-foundation-reference.md
+OK   .qli/rof/specs/runtime-implementation-control.md
+OK   .qli/oat/specs/observability-foundation-reference.md
+OK   .qli/oat/specs/observability-implementation-control.md
+OK   .qli/deployment/specs/delivery-foundation-reference.md
+OK   .qli/deployment/specs/delivery-implementation-control.md
+OK   .qli/devbox/README.md
+OK   .qli/devbox/devbox-implementation-control.md
+OK   .qli/prompts/compact/INDEX.md
+OK   .qli/prompts/compact/00-context-packet.md
+OK   .qli/prompts/compact/01-bind-project.md
+OK   .qli/prompts/compact/02-build-foundation-spine.md
+OK   .qli/prompts/compact/03-active-vertical-slice.md
+OK   .qli/prompts/compact/04-gate-review.md
+OK   .qli/prompts/compact/05-hardening-review.md
+OK   .qli/prompts/compact/06-doctor-audit.md
+OK   .qli/prompts/compact/07-agents-integration.md
+OK   .qli/tools/qli-buildline-doctor.sh
+OK   .qli/tools/qli-buildline-doctor.py
+
+New-project-only cleanup checks
+OK   absent .qli/kickstart
+OK   absent .qli/tools/qli-kickstart.py
+OK   absent .qli/tools/qli-kickstart.ps1
+OK   absent .qli/tools/qli-kickstart.sh
+OK   absent .qli/skills/buildline-kickstart
+OK   absent .qli/skills/buildline-existing-intake
+OK   absent .qli/workflows/existing-project-adoption.md
+OK   absent .qli/prompts/compact/03-existing-project-intake.md
+OK   absent .qli/prompts/compact/04-existing-adoption-slice.md
+OK   absent .qli/prompts/compact/10-project-kickstart.md
+OK   absent .qli/project/adoption-intake.md
+OK   absent .qli/project/adoption-plan.md
+OK   absent .qli/project/behavior-snapshot.md
+OK   absent .qli/project/risk-map.md
+OK   absent .qli/validation
+OK   absent .qli/legacy
+
+Content checks
+
+Active ambiguity scan
+
+Summary
+Failures: 0
+Warnings: 0

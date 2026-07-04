@@ -1,0 +1,45 @@
+version: "2.0"
+system: "QLi Buildline"
+purpose: "Optional skill index for skill-aware AI agents."
+loading_rule: "Do not load all skills by default. Load a skill only when the current task matches its description."
+
+skills:
+  - id: buildline-context-packet
+    enabled: true
+    path: .qli/skills/buildline-context-packet/SKILL.md
+    description: Create or refresh the task context packet used by Buildline prompts.
+
+  - id: buildline-bind-project
+    enabled: true
+    path: .qli/skills/buildline-bind-project/SKILL.md
+    description: Apply Buildline Binding to map project profile to Foundation applicability.
+
+  - id: buildline-spine
+    enabled: true
+    path: .qli/skills/buildline-spine/SKILL.md
+    description: Guide implementation of the upfront Foundation Spine.
+
+  - id: buildline-vertical-slice
+    enabled: true
+    path: .qli/skills/buildline-vertical-slice/SKILL.md
+    description: Keep feature work bounded to a smoke-testable vertical slice.
+
+  - id: buildline-gate-review
+    enabled: true
+    path: .qli/skills/buildline-gate-review/SKILL.md
+    description: Review a slice or phase against Buildline gates.
+
+  - id: buildline-evidence-report
+    enabled: true
+    path: .qli/skills/buildline-evidence-report/SKILL.md
+    description: Produce implementation evidence after a bounded task.
+
+  - id: buildline-doctor-audit
+    enabled: true
+    path: .qli/skills/buildline-doctor-audit/SKILL.md
+    description: Run or interpret Buildline doctor/audit checks.
+
+  - id: buildline-agent-integration
+    enabled: true
+    path: .qli/skills/buildline-agent-integration/SKILL.md
+    description: Integrate AGENTS.md, QLI.md, and tool-specific agent adapters safely.

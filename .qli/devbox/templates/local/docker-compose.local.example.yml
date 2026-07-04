@@ -1,0 +1,13 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: infra/docker/local/Dockerfile
+    container_name: <SLUG>-local-app
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "127.0.0.1:${LOCAL_APP_PORT}:80"
+    volumes:
+      - ./:/var/www/html

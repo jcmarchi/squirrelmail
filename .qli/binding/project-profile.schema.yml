@@ -1,0 +1,22 @@
+schema: qli-buildline-project-profile-v1
+intended_use: new_projects_only
+required:
+  - project.name
+  - project.stage
+  - project.project_mode
+  - buildline.target_level
+  - surfaces
+  - stack
+  - data
+  - security
+
+allowed_values:
+  project.stage: [idea, prototype, mvp, production, enterprise]
+  project.project_mode: [new_project, active_development, maintenance]
+  buildline.target_level: [spine, mvp, production, enterprise]
+  surfaces.ui: [none, browser_ui, admin_ui, mobile_ui, cli, mixed]
+  surfaces.api: [none, internal, public, partner, mixed]
+  data.sensitivity: [public, internal, business_sensitive, confidential, regulated, mixed]
+  tenancy.model: [none, single_account, multi_tenant, organization, workspace, custom]
+  auth.model: [none, first_party_login, external_idp, sso, api_tokens, service_accounts, mixed]
+  deployment.target: [local_dev, qli_devbox_demo, shared_hosting, vps, docker_host, kubernetes, cloud_managed, mixed]

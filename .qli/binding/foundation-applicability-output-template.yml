@@ -1,0 +1,62 @@
+foundation_applicability_version: "2.0"
+project:
+  mode: "new_project | active_development | maintenance"
+  stage: "idea | prototype | mvp | production | enterprise"
+  target_level: "spine | mvp | production | enterprise"
+
+foundations:
+  acd:
+    applicability: "spine_required"
+    reason: "All Buildline projects require application construction doctrine."
+    upfront: true
+    deferrals: []
+  uiux:
+    applicability: "required | partial | deferred | not_applicable | blocked"
+    reason: "[why]"
+    upfront: "[true/false/profile-triggered]"
+    deferrals: []
+  data:
+    applicability: "required | partial | deferred | not_applicable | blocked"
+    reason: "[why]"
+    upfront: "[true/false/profile-triggered]"
+    deferrals: []
+  api:
+    applicability: "required | partial | deferred | not_applicable | blocked"
+    reason: "[why]"
+    upfront: "[true/false/profile-triggered]"
+    deferrals: []
+  acl:
+    applicability: "required | partial | deferred | not_applicable | blocked"
+    reason: "[why]"
+    upfront: "[true/false/profile-triggered]"
+    deferrals: []
+  security:
+    applicability: "minimum_required"
+    reason: "All projects require at least baseline security posture."
+    upfront: true
+    deferrals: []
+  testing:
+    applicability: "minimum_required"
+    reason: "All projects require honest validation evidence."
+    upfront: true
+    deferrals: []
+  runtime:
+    applicability: "required | partial | deferred | not_applicable | blocked"
+    reason: "[why]"
+    upfront: "[true/false/profile-triggered]"
+    deferrals: []
+  observability:
+    applicability: "required | partial | deferred | not_applicable | blocked"
+    reason: "[why]"
+    upfront: "[true/false/profile-triggered]"
+    deferrals: []
+  delivery:
+    applicability: "minimum_required"
+    reason: "All projects need setup/start/delivery posture."
+    upfront: true
+    deferrals: []
+  devbox:
+    applicability: "required | optional | not_applicable | blocked"
+    reason: "[why]"
+    upfront: "[true/false/profile-triggered]"
+    deferrals: []

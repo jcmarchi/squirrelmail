@@ -1,0 +1,76 @@
+buildline:
+  name: "QLi Buildline"
+  tagline: "A foundation-driven system for predictable AI-assisted software construction."
+  version: "2.0-new-project-baseline"
+  status: "new_project_universal_skeleton"
+  canonical_root: ".qli"
+  released_as: "embedded-in-universal-project-skeleton"
+  intended_use: "new_projects_only"
+
+layers:
+  foundation_reference:
+    purpose: "Generic, project-agnostic standards and doctrine."
+    rule: "Reference doctrine says what good looks like. It does not decide project applicability by itself."
+    current_paths:
+      - ".qli/acd"
+      - ".qli/uiux"
+      - ".qli/data"
+      - ".qli/api"
+      - ".qli/acl"
+      - ".qli/rof"
+      - ".qli/test"
+      - ".qli/oat"
+      - ".qli/deployment"
+      - ".qli/security"
+      - ".qli/devbox"
+  binding:
+    path: ".qli/binding"
+    purpose: "Maps the project-specific profile and scope to applicable Foundation requirements."
+  project_state:
+    path: ".qli/project"
+    purpose: "Project-specific profile, applicability, status, evidence, deferrals, and active slice state."
+  spine:
+    path: ".qli/spine"
+    purpose: "Minimum upfront product/application structure required to prevent predictable technical debt."
+  workflows:
+    path: ".qli/workflows"
+    purpose: "Execution procedures for new-project implementation, active slices, hardening, and review."
+  gates:
+    path: ".qli/gates"
+    purpose: "Completion controls and evidence requirements."
+  evidence:
+    path: ".qli/evidence"
+    purpose: "Reusable evidence templates and reporting conventions."
+  skills:
+    path: ".qli/skills"
+    purpose: "Optional bounded execution modules for skill-aware AI agents."
+  agents:
+    path: ".qli/agents"
+    purpose: "Safe integration blocks for generated project-specific AGENTS.md files."
+  tools:
+    path: ".qli/tools"
+    purpose: "Doctor/audit scripts and operational checks."
+
+protected_artifacts:
+  agents_md:
+    path: "AGENTS.md"
+    ownership: "project skeleton / generated project artifact"
+    policy: "Do not blindly replace. Compose from skeleton rules, project constraints, and the Buildline integration block."
+
+completion_model:
+  foundation_status: ".qli/project/foundation-status.yml"
+  applicability: ".qli/project/foundation-applicability.yml"
+  deferrals: ".qli/project/deferral-register.md"
+  active_slice: ".qli/project/current-slice.yml"
+  evidence_template: ".qli/evidence/slice-evidence-template.md"
+  gate: ".qli/gates/foundation-gate.md"
+
+core_rule: >
+  The Foundation tells what good looks like. Binding determines what applies. Spine establishes the upfront baseline.
+  Workflows perform the work. Gates decide completion. Evidence proves it. Doctor audits it.
+
+new_project_workflow:
+  source_of_truth: "AI Co-Architect generated product docs and project-specific skeleton customization."
+  product_docs_root: "docs/"
+  project_state_root: ".qli/project/"
+  first_agent_output: "controlled coding-agent prompt issued after repository safety review."
