@@ -10,6 +10,14 @@ echo "=== SquirrelMail DevBox Setup ==="
 # Create docker directory structure if needed
 mkdir -p docker/dovecot
 
+# Generate local users.passwd from the committed example file.
+# docker/dovecot/users.passwd contains public DevBox-only fixture
+# credentials (not secrets). It is generated locally and gitignored.
+if [ ! -f docker/dovecot/users.passwd ]; then
+    echo "Generating docker/dovecot/users.passwd from example..."
+    cp docker/dovecot/users.passwd.example docker/dovecot/users.passwd
+fi
+
 # Start the services
 echo "Starting DevBox services..."
 docker compose up -d
@@ -32,8 +40,8 @@ docker compose restart imap 2>/dev/null || true
 
 echo ""
 echo "=== Setup complete ==="
-echo "SquirrelMail: http://127.0.0.1:20100/"
-echo "Mailpit web UI: http://127.0.0.1:20100/mailpit (not routed; use docker compose exec smtp ... to inspect)"
+echo "SquirrelMail: http://127.0.0.1:20110/"
+echo "Mailpit web UI: http://127.0.0.1:20110/mailpit (not routed; use docker compose exec smtp ... to inspect)"
 echo ""
 echo "Test IMAP credentials:"
 echo "  Username: testuser  Password: testpass"

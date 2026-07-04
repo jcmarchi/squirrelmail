@@ -4,6 +4,9 @@
 # SquirrelMail generated config (created by Docker bind mount)
 config/config.php
 
+# Generated local file (public DevBox-only fixture credentials, not secrets)
+docker/dovecot/users.passwd
+
 # SquirrelMail user data (should not be committed)
 data/
 attach/

@@ -10,7 +10,7 @@ bash devbox-setup.sh
 docker compose up -d
 ```
 
-SquirrelMail will be available at: **http://127.0.0.1:20100/**
+SquirrelMail will be available at: **http://127.0.0.1:20110/**
 
 ## Architecture
 
@@ -25,7 +25,7 @@ SquirrelMail will be available at: **http://127.0.0.1:20100/**
 │  └────┬─────┘  └──────────┘  └───────────┘ │
 │       │                                      │
 └───────┼──────────────────────────────────────┘
-        │ 127.0.0.1:20100
+        │ 127.0.0.1:20110
         ▼
    [Browser]
 ```
@@ -34,7 +34,7 @@ SquirrelMail will be available at: **http://127.0.0.1:20100/**
 
 | Service | Container | Internal Port | Host Port | Purpose |
 |---|---|---|---|---|
-| web | squirrelmail-web | 80 | 127.0.0.1:20100 | SquirrelMail application |
+| web | squirrelmail-web | 80 | 127.0.0.1:20110 | SquirrelMail application |
 | imap | squirrelmail-imap | 143 | (none) | Test IMAP server |
 | smtp | squirrelmail-smtp | 1025 | (none) | SMTP capture (Mailpit) |
 
@@ -45,7 +45,10 @@ SquirrelMail will be available at: **http://127.0.0.1:20100/**
 | testuser | testpass | General testing |
 | devbox | devbox | DevBox operator testing |
 
-These are static accounts defined in `docker/dovecot/users.passwd`.
+These are public DevBox-only fixture credentials (not secrets).
+The committed file is `docker/dovecot/users.passwd.example`.
+The setup script (`devbox-setup.sh`) generates `docker/dovecot/users.passwd`
+locally from the example. The generated file is gitignored.
 
 ## SMTP behavior
 
@@ -75,14 +78,14 @@ All data is outside the web root and private to the Docker network.
 ## Accessing configtest
 
 The configuration test page is available at:
-http://127.0.0.1:20100/src/configtest.php
+http://127.0.0.1:20110/src/configtest.php
 
 Remote access is enabled for the DevBox Docker network (`$allow_remote_configtest = true`).
 In production, this should be disabled.
 
 ## Login flow
 
-1. Navigate to http://127.0.0.1:20100/ (redirects to src/login.php)
+1. Navigate to http://127.0.0.1:20110/ (redirects to src/login.php)
 2. Enter test credentials (e.g., `testuser` / `testpass`)
 3. SquirrelMail authenticates against the internal Dovecot IMAP server
 4. On successful login, the mailbox interface renders
