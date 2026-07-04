@@ -1,23 +1,23 @@
 foundation_status_version: "2.0"
 project_mode: "existing_project_adoption"
 current_target_level: "spine"
-current_slice: "unset"
+current_slice: "adoption-intake"
 
 status_values:
   allowed: [not_started, partial, implemented, deferred, not_applicable, blocked]
 
 foundations:
   acd: {status: not_started, evidence: [], gaps: []}
-  uiux: {status: not_started, evidence: [], gaps: []}
-  data: {status: not_started, evidence: [], gaps: []}
-  api: {status: not_started, evidence: [], gaps: []}
-  acl: {status: not_started, evidence: [], gaps: []}
-  security: {status: not_started, evidence: [], gaps: []}
-  testing: {status: not_started, evidence: [], gaps: []}
-  runtime: {status: not_started, evidence: [], gaps: []}
-  observability: {status: not_started, evidence: [], gaps: []}
-  delivery: {status: not_started, evidence: [], gaps: []}
-  devbox: {status: not_started, evidence: [], gaps: []}
+  uiux: {status: deferred, evidence: [], gaps: ["Frameset-based UI. Modernization deferred."]}
+  data: {status: deferred, evidence: [], gaps: ["File-based storage. No migration plan yet."]}
+  api: {status: not_applicable, evidence: [], gaps: ["No API surface. Internal PHP app."]}
+  acl: {status: deferred, evidence: [], gaps: ["IMAP-only auth. Application ACL deferred."]}
+  security: {status: not_started, evidence: [], gaps: ["Security review pending."]}
+  testing: {status: not_started, evidence: [], gaps: ["No automated test suite exists."]}
+  runtime: {status: partial, evidence: ["PR #1 DevBox baseline"], gaps: ["Runtime validation pending."]}
+  observability: {status: deferred, evidence: [], gaps: ["Deferred until Spine."]}
+  delivery: {status: partial, evidence: ["PR #1 DevBox baseline"], gaps: ["Route registration pending."]}
+  devbox: {status: partial, evidence: ["PR #1 docker-compose.yml"], gaps: ["Smoke testing pending."]}
 
 last_gate:
   result: unset
