@@ -1,6 +1,6 @@
 foundation_status_version: "2.0"
-project_mode: "new_project"
-current_target_level: "unset" # spine | mvp | production | enterprise
+project_mode: "existing_project_adoption"
+current_target_level: "spine"
 current_slice: "unset"
 
 status_values:

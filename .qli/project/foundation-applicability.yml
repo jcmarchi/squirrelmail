@@ -1,7 +1,7 @@
 foundation_applicability_version: "2.0"
-project_type: "unset"
-stage: "unset"
-target_level: "unset"
+project_type: "legacy-webapp"
+stage: "legacy-modernization"
+target_level: "spine"
 
 instructions: >
   This file is project-specific. Do not copy values blindly from another project.
@@ -48,5 +48,5 @@ foundations:
     applicability: minimum_required
     reason: "All projects need setup/start/delivery posture."
   devbox:
-    applicability: blocked
-    reason: "Unset until DevBox use is decided."
+    applicability: required
+    reason: "Project runs inside QLi DevBox. DevBox integration is required."

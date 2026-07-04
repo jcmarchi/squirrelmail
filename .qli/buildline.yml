@@ -1,11 +1,11 @@
 buildline:
   name: "QLi Buildline"
   tagline: "A foundation-driven system for predictable AI-assisted software construction."
-  version: "2.0-new-project-baseline"
-  status: "new_project_universal_skeleton"
+  version: "2.0-existing-project-adoption"
+  status: "existing_project_adoption"
   canonical_root: ".qli"
-  released_as: "embedded-in-universal-project-skeleton"
-  intended_use: "new_projects_only"
+  released_as: "embedded-in-existing-project"
+  intended_use: "existing_project_adoption"
 
 layers:
   foundation_reference:
@@ -70,7 +70,11 @@ core_rule: >
   Workflows perform the work. Gates decide completion. Evidence proves it. Doctor audits it.
 
 new_project_workflow:
-  source_of_truth: "AI Co-Architect generated product docs and project-specific skeleton customization."
-  product_docs_root: "docs/"
+  source_of_truth: "SquirrelMail legacy codebase and existing project documentation."
   project_state_root: ".qli/project/"
-  first_agent_output: "controlled coding-agent prompt issued after repository safety review."
+  first_agent_output: "Discovery report and adoption intake after repository safety review."
+
+existing_project_adoption_workflow:
+  source_of_truth: "Existing SquirrelMail source code, doc/, DEVBOX.md, and .qli/project/ records."
+  project_state_root: ".qli/project/"
+  first_agent_output: "Adoption intake and behavior snapshot after read-only discovery."

@@ -1,9 +1,9 @@
 schema: qli-buildline-context-packet-v1
 status: draft
 session:
-  mode: "new-project | active-development | hardening | audit | maintenance"
-  pass_or_slice: ""
-  objective: ""
+  mode: "existing-project-adoption"
+  pass_or_slice: "buildline-overlay"
+  objective: "Apply and correct QLi Buildline foundation overlay for existing-project SquirrelMail adoption."
 context:
   must_read:
     - "AGENTS.md"
