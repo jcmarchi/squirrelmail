@@ -38,10 +38,27 @@ $smtp_auth_mech    = 'none';
 $useSendmail       = false;
 
 /**
+ * Canonical base URL.
+ * Required for post-login redirects to preserve the HTTPS host
+ * when SquirrelMail is behind a Caddy reverse proxy.
+ */
+$config_location_base = 'https://squirrelmail.qlidemo.com';
+
+/**
  * Data and attachment directories (outside web root, inside Docker volume)
  */
 $data_dir       = '/var/local/squirrelmail/data/';
 $attachment_dir = '/var/local/squirrelmail/attach/';
+
+/**
+ * Folder delimiter and special folder names.
+ * DevBox Dovecot uses '/' separator (not '.').
+ * Must match docker/dovecot/dovecot.conf namespace separator.
+ */
+$optional_delimiter = '/';
+$trash_folder = 'INBOX/Trash';
+$sent_folder  = 'INBOX/Sent';
+$draft_folder = 'INBOX/Drafts';
 
 /**
  * Disallow remote configtest access.
