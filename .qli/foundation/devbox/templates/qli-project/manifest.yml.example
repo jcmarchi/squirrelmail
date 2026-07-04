@@ -1,0 +1,54 @@
+# QLi Project Manifest — Example Template
+# Schema version: 1
+# Copy this file to .qli/project/manifest.yml in the managed project.
+# Replace all <PLACEHOLDER> values. Do not leave placeholder text in a completed manifest.
+# This file is safe to commit to project version control. Do not include secrets.
+
+qli_schema_version: "1"
+
+project_slug: "<PROJECT_SLUG>"
+# Short identifier, lowercase, hyphens only. Used in route generation and registry.
+# Example: my-app
+
+project_name: "<PROJECT_NAME>"
+# Human-readable project name.
+
+project_type: ""
+# One of: web-app, api-service, tool, library, monorepo, other
+
+repo_url: "<REPO_URL>"
+# Full HTTPS or SSH URL of the project repository.
+
+local_project_path: "<LOCAL_PROJECT_PATH>"
+# Absolute path to the project directory on the DevBox server.
+# Example: /srv/projects/<PROJECT_SLUG>
+
+devbox_managed: true
+
+devbox_foundation_version: "<DEVBOX_FOUNDATION_VERSION>"
+# Version string or commit SHA of the DevBox Foundation material installed under
+# .qli/foundation/devbox/ at time of onboarding.
+
+onboarding_status: "pending"
+# One of: pending, in-progress, complete, deferred, failed
+
+assigned_port_block_id: "<PORT_BLOCK_ID>"
+# Opaque identifier for the DevBox port block assigned to this project.
+# Actual port numbers are in port-block.env, not here.
+
+primary_runtime: ""
+# Example: docker-compose, docker-standalone, node, python
+
+database_runtime: ""
+# Example: postgres-16, mysql-8, sqlite, none
+
+route_mode: ""
+# One of: public, private, internal, none
+
+source_code_change_policy: "non-invasive-only"
+# One of: non-invasive-only, approved-changes-documented
+# Start with non-invasive-only. Change only if source modifications were required and approved.
+
+last_onboarding_review: ""
+# ISO 8601 date of most recent onboarding review.
+# Example: 2026-05-24

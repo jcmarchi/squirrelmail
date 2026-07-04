@@ -1,0 +1,102 @@
+# Smoke Checks — Example Template
+# Copy this file to .qli/project/smoke-checks.md in the managed project.
+# Replace all placeholder text. Do not leave placeholder text in a completed file.
+# This file is safe to commit to project version control.
+# Record pass/fail/notes only — never credentials, tokens, or session values.
+# Append new dated sections for subsequent smoke-check runs rather than overwriting.
+
+# Smoke Checks
+
+Project: `<PROJECT_SLUG>`
+
+---
+
+## Smoke check record
+
+### Date
+
+<!-- ISO 8601 date and time of smoke checks. -->
+<!-- Example: 2026-05-24T15:00:00Z -->
+
+---
+
+### Container status
+
+<!-- List each container and its status at time of check. -->
+
+| Container | Status |
+|---|---|
+| `<PROJECT_SLUG>-app` | <!-- running / stopped / error --> |
+| `<PROJECT_SLUG>-db` | <!-- running / stopped / error / not-applicable --> |
+
+---
+
+### Health endpoints
+
+<!-- List each health or readiness endpoint checked and its result.
+     Use port variable references for clarity. -->
+
+| Endpoint | Result |
+|---|---|
+| `GET http://127.0.0.1:<APP_PORT>/health` | <!-- 200 OK / 404 / error --> |
+
+---
+
+### UI routes
+
+<!-- List each UI route checked via Caddy and its result.
+     Use placeholder hostnames unless operator approves live values. -->
+
+| Route | Result |
+|---|---|
+| `https://<PROJECT_SLUG>.<DOMAIN>/` | <!-- 200 OK / 301 / error --> |
+
+---
+
+### API routes
+
+<!-- List each API route checked and its result. -->
+
+| Route | Result |
+|---|---|
+| `https://<PROJECT_SLUG>.<DOMAIN>/api/health` | <!-- 200 OK / 404 / error --> |
+
+---
+
+### Database visibility
+
+<!-- Confirm database is accessible within Docker network and not exposed publicly. -->
+
+| Check | Result |
+|---|---|
+| DB accessible via Docker network | <!-- yes / no / not-applicable --> |
+| DB host port exposure | <!-- none / unexpectedly exposed --> |
+
+---
+
+### Port exposure check
+
+<!-- Confirm that only expected ports are bound on the host. -->
+
+| Port | Binding | Expected |
+|---|---|---|
+| `<APP_PORT>` | `127.0.0.1:<APP_PORT>` | yes |
+| `0.0.0.0:*` | none | yes (no wildcard bindings expected) |
+
+---
+
+### Caddy validation
+
+<!-- Record result of `caddy validate` at time of smoke check. -->
+
+Result: <!-- passed / failed / not-run -->
+Date: <!-- ISO 8601 date -->
+
+---
+
+### Final smoke result
+
+<!-- one of: passed / partial / failed -->
+<!-- Include a one-line summary. -->
+
+not-run — smoke checks not yet executed

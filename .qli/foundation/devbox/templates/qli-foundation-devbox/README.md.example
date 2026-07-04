@@ -1,0 +1,61 @@
+# DevBox Foundation — Project-Local Reference
+# This file is copied from /srv/dev/foundation/devbox/current/ during onboarding.
+# It is safe to commit to the managed project repository.
+# Do not store project-specific values, credentials, or secrets here.
+
+# .qli/foundation/devbox/
+
+This directory contains a snapshot of the DevBox Foundation material installed in this project during onboarding. It is read-only reference material for DevBox operational doctrine.
+
+---
+
+## What this directory is
+
+`.qli/foundation/devbox/` is the project-local DevBox Foundation snapshot for this managed project.
+
+It contains the operational doctrine, policy files, schemas, and templates that govern how this project lives inside a DevBox-managed server. It was copied from `/srv/dev/foundation/devbox/current/` on the live DevBox server at onboarding time and is tracked in version control so that any contributor or AI Coding Agent can read DevBox operational rules without needing server access.
+
+See `MANIFEST.md` in this directory for the source repository, branch, commit, and installation date of this snapshot.
+
+---
+
+## What this directory governs
+
+The files in this directory govern:
+
+- the `.qli/` reserved namespace structure
+- DevBox port block assignment and override policy
+- route registration and Caddy exposure model
+- the standard onboarding sequence
+- `.qli/project/` metadata schema and templates
+- AI-agent-safe onboarding conduct
+
+---
+
+## What this directory does not govern
+
+This directory does not govern or replace:
+
+- this project's own `AGENTS.md` or AI agent conduct rules
+- this project's `README.md`, `SETUP.md`, or product documentation
+- this project's architecture decisions, API contracts, or data models
+- this project's technology stack choices or product roadmap
+- this project's engineering standards or testing practices
+
+If there is a conflict between the DevBox Foundation doctrine in this directory and this project's own doctrine, this project's own doctrine takes precedence for product and engineering decisions. DevBox Foundation takes precedence only for DevBox-specific operational concerns: port assignment, route registration, and runtime overrides.
+
+---
+
+## Where project-specific metadata lives
+
+Project-specific onboarding metadata — port block assignment, override strategy, route intent, onboarding report, and smoke-check results — lives in `.qli/project/`, not here.
+
+See `QLI_PROJECT_METADATA_SCHEMA.md` in this directory for the required `.qli/project/` file schema and templates.
+
+---
+
+## Where secrets must not live
+
+Secrets, credentials, API keys, tokens, auth hashes, WireGuard configuration, private keys, private IP addresses, and live production hostnames must not be stored anywhere under `.qli/`. Not here, not in `.qli/project/`, not anywhere in this namespace.
+
+If a value is sensitive, store it in an operator-managed secrets location outside the project repository.
