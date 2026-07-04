@@ -38,6 +38,13 @@ $smtp_auth_mech    = 'none';
 $useSendmail       = false;
 
 /**
+ * Canonical base URL.
+ * Required for post-login redirects to preserve the HTTPS host
+ * when SquirrelMail is behind a Caddy reverse proxy.
+ */
+$config_location_base = 'https://squirrelmail.qlidemo.com';
+
+/**
  * Data and attachment directories (outside web root, inside Docker volume)
  */
 $data_dir       = '/var/local/squirrelmail/data/';
