@@ -1,0 +1,22 @@
+profile_version: "2.0"
+project_name: "SquirrelMail QLi"
+product_stage: "legacy-modernization"
+distribution_model: "self-hosted"
+deployment_target: "qli-devbox"
+public_exposure: "authenticated-public"
+identity_model: "local-users"
+tenancy_model: "none"
+data_sensitivity: "confidential"
+runtime_model: "request-response"
+ui_review_model: "screens-required"
+api_model: "internal"
+acl_required: "yes"
+security_posture: "production"
+observability_posture: "baseline"
+backup_restore_required: "later"
+devbox_integration: "required"
+
+notes:
+  assumptions: []
+  explicit_non_goals: []
+  approved_deferrals: []

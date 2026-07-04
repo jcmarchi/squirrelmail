@@ -1,0 +1,52 @@
+foundation_applicability_version: "2.0"
+project_type: "legacy-webapp"
+stage: "legacy-modernization"
+target_level: "spine"
+
+instructions: >
+  This file is project-specific. Do not copy values blindly from another project.
+  Populate it by applying .qli/binding/foundation-applicability-rules.yml to the project profile.
+
+allowed_values:
+  - required
+  - spine_required
+  - minimum_required
+  - partial
+  - deferred
+  - not_applicable
+  - blocked
+
+foundations:
+  acd:
+    applicability: spine_required
+    reason: "All Buildline projects require construction doctrine."
+  uiux:
+    applicability: blocked
+    reason: "Unset until project surfaces are classified."
+  data:
+    applicability: blocked
+    reason: "Unset until persistence needs are classified."
+  api:
+    applicability: blocked
+    reason: "Unset until interface surfaces are classified."
+  acl:
+    applicability: blocked
+    reason: "Unset until user/protection model is classified."
+  security:
+    applicability: minimum_required
+    reason: "All projects require at least baseline security posture."
+  testing:
+    applicability: minimum_required
+    reason: "All projects require honest validation evidence."
+  runtime:
+    applicability: blocked
+    reason: "Unset until runtime model is classified."
+  observability:
+    applicability: blocked
+    reason: "Unset until deployment/runtime surfaces are classified."
+  delivery:
+    applicability: minimum_required
+    reason: "All projects need setup/start/delivery posture."
+  devbox:
+    applicability: required
+    reason: "Project runs inside QLi DevBox. DevBox integration is required."

@@ -1,0 +1,9 @@
+schema: qli-buildline-context-packet-schema-v1
+intended_use: new_projects_only
+required_sections: [session, context, scope, foundations, validation, evidence, stop_conditions]
+allowed_values:
+  session.mode: [new-project, active-development, hardening, audit, maintenance]
+  validation.tier: [tier1-static, tier2-focused, tier3-smoke, tier4-full-regression]
+stop_conditions:
+  - binding_stops_apply
+  - acl_security_data_stops_apply

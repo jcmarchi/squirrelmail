@@ -1,0 +1,114 @@
+version: "2.0"
+name: "QLi Buildline Foundation Applicability Rules"
+
+rule_order:
+  - read_project_profile
+  - classify_project
+  - select_target_level
+  - compute_required_foundations
+  - compute_spine_requirements
+  - record_deferrals
+  - update_foundation_status
+
+applicability_values:
+  required: "Foundation applies and must be represented in implementation."
+  spine_required: "Foundation applies and its minimum upfront spine must be established before broad feature work."
+  minimum_required: "A baseline is required, but advanced capabilities activate only by trigger."
+  partial: "Only named controls apply now; remaining controls must be deferred or marked not applicable."
+  deferred: "Applicable later; must include trigger, risk, and review point."
+  not_applicable: "Does not apply to this project/slice; must include reason."
+  blocked: "Should apply but cannot yet be implemented; requires blocker and owner."
+
+universal_defaults:
+  acd: spine_required
+  testing: minimum_required
+  delivery: minimum_required
+
+surface_rules:
+  browser_ui:
+    requires: [uiux]
+    spine_required: [uiux, testing]
+  authenticated_ui:
+    requires: [uiux, acl, security]
+    spine_required: [uiux, acl, security, testing]
+  public_api:
+    requires: [api, security, testing, observability]
+    spine_required: [api, security, testing]
+  authenticated_api:
+    requires: [api, acl, security, testing]
+    spine_required: [api, acl, security, testing]
+  admin_panel:
+    requires: [uiux, api, acl, security, observability, testing]
+    spine_required: [uiux, acl, security, testing]
+  file_uploads:
+    requires: [data, security, api, testing]
+    spine_required: [security, data, testing]
+  billing_or_payments:
+    requires: [data, api, acl, security, observability, testing]
+    spine_required: [data, api, acl, security, observability, testing]
+  multi_tenant:
+    requires: [data, api, acl, security, observability, testing]
+    spine_required: [data, acl, security, testing]
+  externally_reachable_demo:
+    requires: [delivery, security, observability, testing]
+    spine_required: [delivery, security, testing]
+  devbox_hosted:
+    requires: [devbox, delivery, observability, testing]
+    spine_required: [devbox, delivery, testing]
+  background_jobs:
+    requires: [runtime, observability, testing, delivery]
+    spine_required: [runtime, testing]
+  scheduled_work:
+    requires: [runtime, observability, testing, delivery]
+    spine_required: [runtime, testing]
+
+project_type_defaults:
+  static_marketing_site:
+    required: [acd, uiux, testing, delivery, security]
+    conditional: [observability]
+    usually_not_applicable: [acl, api, runtime]
+  content_application:
+    required: [acd, uiux, data, testing, delivery, security]
+    conditional: [api, acl, observability, runtime]
+  internal_tool:
+    required: [acd, uiux, data, acl, security, testing, delivery]
+    conditional: [api, observability, runtime]
+  api_service:
+    required: [acd, data, api, security, testing, delivery, observability]
+    conditional: [acl, runtime, devbox, uiux]
+  single_tenant_saas:
+    required: [acd, uiux, data, api, acl, security, testing, delivery, observability]
+    conditional: [runtime, devbox]
+  multi_tenant_saas:
+    required: [acd, uiux, data, api, acl, security, testing, delivery, observability]
+    spine_required: [uiux, data, api, acl, security, testing]
+    conditional: [runtime, devbox]
+  ai_product:
+    required: [acd, uiux, data, api, acl, security, testing, delivery, observability]
+    conditional: [runtime, devbox]
+  open_source_package:
+    required: [acd, testing, delivery, security]
+    conditional: [uiux, api, data, runtime, observability]
+
+stage_scaling:
+  prototype:
+    minimum_expected: [acd, uiux, testing]
+    evidence_level: "light but explicit"
+  mvp:
+    minimum_expected: [acd, uiux, data, api, acl, security, testing, delivery]
+    evidence_level: "slice-level"
+  production:
+    minimum_expected: [acd, uiux, data, api, acl, security, testing, delivery, observability]
+    evidence_level: "gate-level"
+  enterprise:
+    minimum_expected: [acd, uiux, data, api, acl, security, testing, delivery, observability, runtime]
+    evidence_level: "audit-level"
+
+hard_rules:
+  - "Do not mark a foundation not_applicable when a project surface rule requires it."
+  - "Do not defer ACL for protected actions or tenant boundaries."
+  - "Do not defer security baseline for public/authenticated software."
+  - "Do not defer human smoke paths for implemented UI."
+  - "Do not defer data classification for persisted or sensitive data."
+  - "Do not defer API contract discipline for endpoints consumed by UI or integrations."
+  - "Do not run full regression by default; select the test tier based on gate triggers."
