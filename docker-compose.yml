@@ -1,6 +1,6 @@
 # DevBox runtime for SquirrelMail
-# Port block: block-app-20100
-# App binds to 127.0.0.1:20100
+# Port block: block-app-20110
+# App binds to 127.0.0.1:20110
 # Internal services (IMAP, SMTP) are private to the Docker network.
 # Do not expose database, cache, IMAP, or SMTP ports to the host.
 
@@ -9,7 +9,7 @@ services:
     image: php:8.3-apache
     container_name: squirrelmail-web
     ports:
-      - "127.0.0.1:20100:80"
+      - "127.0.0.1:20110:80"
     volumes:
       - .:/var/www/html:rw
       - squirrelmail_data:/var/local/squirrelmail/data

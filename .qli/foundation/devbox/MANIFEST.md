@@ -5,7 +5,7 @@
 | Field | Value |
 |---|---|
 | installed_from_server_path | /srv/dev/foundation/devbox/current |
-| installed_at | 2026-07-03T22:12:25Z |
+| installed_at | 2026-07-04T03:09:19Z |
 | installed_by_role | DevBox Operator |
 | foundation_schema_version |  |
 
