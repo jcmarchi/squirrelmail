@@ -9,9 +9,9 @@ status_values:
 foundations:
   acd: {status: not_started, evidence: [], gaps: []}
   uiux: {status: deferred, evidence: [], gaps: ["Frameset-based UI. Modernization deferred."]}
-  data: {status: deferred, evidence: [], gaps: ["File-based storage. No migration plan yet."]}
+  data: {status: not_started, evidence: [], gaps: ["File-based storage model must be mapped. Database migration deferred."]}
   api: {status: not_applicable, evidence: [], gaps: ["No API surface. Internal PHP app."]}
-  acl: {status: deferred, evidence: [], gaps: ["IMAP-only auth. Application ACL deferred."]}
+  acl: {status: not_started, evidence: [], gaps: ["Access boundaries must be mapped. New ACL implementation deferred."]}
   security: {status: not_started, evidence: [], gaps: ["Security review pending."]}
   testing: {status: not_started, evidence: [], gaps: ["No automated test suite exists."]}
   runtime: {status: partial, evidence: ["PR #1 DevBox baseline"], gaps: ["Runtime validation pending."]}

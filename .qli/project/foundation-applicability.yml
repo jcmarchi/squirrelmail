@@ -24,14 +24,14 @@ foundations:
     applicability: deferred
     reason: "Frameset-based UI. Defer modernization until after Spine."
   data:
-    applicability: deferred
-    reason: "File-based preferences and address books. No database. Defer until data migration plan."
+    applicability: minimum_required
+    reason: "File-based preferences, address books, attachments, DevBox data volumes, and config-driven storage paths must be mapped now. Database migration remains deferred."
   api:
     applicability: not_applicable
     reason: "No API surface. Internal PHP application with direct IMAP/SMTP communication."
   acl:
-    applicability: deferred
-    reason: "IMAP-based authentication only. No application-level ACL. Defer until auth model review."
+    applicability: minimum_required
+    reason: "Anonymous login surfaces, authenticated mailbox routes, admin/configtest surfaces, plugin surfaces, session/referrer protections, and access-sensitive file/attachment behavior must be mapped now. New ACL implementation remains deferred."
   security:
     applicability: minimum_required
     reason: "Production security posture required per operating profile."

@@ -6,10 +6,10 @@ Each meaningful implementation pass must add one entry. Evidence must identify p
 
 ### `2026-07-04` — `adoption-intake-001` — `SquirrelMail QLi Buildline Adoption Intake`
 
-**Objective:**  
+**Objective:**
 Perform read-only discovery of the existing SquirrelMail codebase and populate project-specific Buildline adoption files with architecture findings, behavior documentation, and risk assessment.
 
-**Product behavior changed:**  
+**Product behavior changed:**
 No. Read-only discovery pass. Zero application source files modified.
 
 **Foundation coverage:**
@@ -18,9 +18,9 @@ No. Read-only discovery pass. Zero application source files modified.
 |---|---|---|
 | Core/ACD | not_started | Architecture documented in adoption-intake.md |
 | UI/UX | deferred | Frameset-based UI. Behavior snapshot created. |
-| DATA | deferred | File-based preferences. Documented in intake. |
+| DATA | not_started | File-based storage model documented. Mapping required. Database migration deferred. |
 | API | not_applicable | No API surface. Internal PHP application. |
-| ACL | deferred | IMAP-only auth. Documented in intake. |
+| ACL | not_started | Access boundaries documented. Mapping required. New ACL implementation deferred. |
 | Runtime | partial | DevBox baseline (PR #1). Runtime documented. |
 | Testing | not_started | No test suite. Risk mapped (R10). |
 | Observability | deferred | Baseline. Deferred until Spine. |
@@ -70,6 +70,6 @@ No. Read-only discovery pass. Zero application source files modified.
 - Observability instrumentation
 - Automated test suite
 
-**Next approved slice:**  
+**Next approved slice:**
 `spine-planning` — Foundation Spine planning based on adoption intake and risk map.
 
