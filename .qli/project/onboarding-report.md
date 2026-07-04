@@ -88,3 +88,10 @@ the base `docker-compose.yml` uses 127.0.0.1:20110 directly.
 - Route registration via DevBox registry
 - Caddy route-sync and reload
 
+
+## Route finalization
+
+- Completed at : 2026-07-04T06:37:24Z
+- Host         : squirrelmail.qlidemo.com
+- Upstream     : http://127.0.0.1:20110
+- Status       : route-finalized
