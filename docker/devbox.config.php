@@ -51,6 +51,16 @@ $data_dir       = '/var/local/squirrelmail/data/';
 $attachment_dir = '/var/local/squirrelmail/attach/';
 
 /**
+ * Folder delimiter and special folder names.
+ * DevBox Dovecot uses '/' separator (not '.').
+ * Must match docker/dovecot/dovecot.conf namespace separator.
+ */
+$optional_delimiter = '/';
+$trash_folder = 'INBOX/Trash';
+$sent_folder  = 'INBOX/Sent';
+$draft_folder = 'INBOX/Drafts';
+
+/**
  * Disallow remote configtest access.
  * Must remain false for public-route safety.
  * Use docker compose exec for local diagnostics.
