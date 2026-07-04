@@ -58,7 +58,11 @@ Completed at     : 2026-07-04
 
 ## Known blockers
 
-1. **HTTP redirect**: `http://squirrelmail.qlidemo.com/` redirects to `https://qlinnovations.com/` instead of `https://squirrelmail.qlidemo.com/`. This is a Caddy server-level issue.
-2. **Post-login redirect**: After successful authentication, the browser is redirected to `qlinnovations.com/src/webmail.php` instead of the squirrelmail domain.
-3. **Dovecot IMAP**: IMAP login requires `first_valid_uid=101` in dovecot.conf (not applied in this pass; fix deferred to authorized runtime pass).
+1. **HTTP redirect**: `http://squirrelmail.qlidemo.com/` redirects to `https://qlinnovations.com/` instead of `https://squirrelmail.qlidemo.com/`.
+   - Root cause: Global Caddy wildcard `http://*.qlidemo.com { redir https://qlinnovations.com{uri} }` in `/etc/caddy/Caddyfile`
+   - Fix: Change `qlinnovations.com` to `{host}` in the wildcard redirect
+   - Requires: DevBox operator with sudo to edit `/etc/caddy/Caddyfile` and reload Caddy
+   - Full diagnosis: `.qli/project/caddy-redirect-correction.md`
+2. **Post-login redirect**: Same root cause as #1.
+3. **Dovecot IMAP**: IMAP login requires `first_valid_uid=101` in dovecot.conf (deferred to authorized runtime pass).
 4. **Route not acceptance-ready**: Route is registered and Caddy is reloaded, but external functional smoke cannot complete due to redirect blockers.
