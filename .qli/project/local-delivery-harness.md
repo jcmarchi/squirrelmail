@@ -78,7 +78,6 @@ Delivery state tracked in `docker/tools/.local-delivery-state` (line-separated M
 - State file is local to DevBox instance, not versioned
 - If Mailpit is restarted with `docker compose down`, state may need reset
 - Does not handle CC/BCC multi-recipient delivery (first local match wins)
-- Reply validation: testable but not yet browser-validated in this pass
 
 ## 10. Tests Now Enabled
 
@@ -86,7 +85,7 @@ Delivery state tracked in `docker/tools/.local-delivery-state` (line-separated M
 |---|---|
 | T7 Compose + Send | ✅ (was SMTP capture only, now full delivery) |
 | T8 Receive sent message in INBOX | ✅ (delivery harness places in INBOX) |
-| T9 Reply to received message | Testable — pending browser validation |
+| T9 Reply to received message | ✅ (devbox replied to testuser, reply delivered and visible) |
 | T10 Forward received message | Testable — pending browser validation |
 
 ## 11. Explicit Non-Goals
