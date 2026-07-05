@@ -1,0 +1,12 @@
+From: sender@devbox.local
+To: testuser@devbox.local
+Subject: [SMQ Fixture] Plain Text Message
+Date: Thu, 03 Jul 2026 10:00:00 +0000
+Message-ID: <smq-fixture-plain-001@devbox.local>
+Content-Type: text/plain; charset=UTF-8
+
+This is a plain text fixture message for SquirrelMail DevBox testing.
+
+It contains multiple paragraphs to verify line-wrapping and display.
+
+No sensitive data.

@@ -1,0 +1,27 @@
+From: sender@devbox.local
+To: testuser@devbox.local
+Subject: [SMQ Fixture] Multipart Message
+Date: Thu, 03 Jul 2026 10:02:00 +0000
+Message-ID: <smq-fixture-multipart-001@devbox.local>
+Content-Type: multipart/alternative; boundary="smq-fixture-boundary-001"
+
+--smq-fixture-boundary-001
+Content-Type: text/plain; charset=UTF-8
+
+This is the plain text part of a multipart fixture message.
+
+No sensitive data.
+
+--smq-fixture-boundary-001
+Content-Type: text/html; charset=UTF-8
+
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Multipart Fixture</h1>
+<p>This is the <strong>HTML part</strong> of a multipart fixture.</p>
+<p>No sensitive data.</p>
+</body>
+</html>
+
+--smq-fixture-boundary-001--
