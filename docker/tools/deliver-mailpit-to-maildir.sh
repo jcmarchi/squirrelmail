@@ -51,6 +51,13 @@ SKIPPED_NONLOCAL=0
 SKIPPED_DUPLICATE=0
 ERRORS=0
 
+# Preflight: python3 required for JSON parsing
+if ! command -v python3 &>/dev/null; then
+  echo "ERROR: python3 is required for Mailpit JSON parsing."
+  echo "python3 is a DevBox system dependency and should be available."
+  exit 1
+fi
+
 # Process each message
 while IFS= read -r msg_id; do
   [ -z "$msg_id" ] && continue
@@ -66,10 +73,21 @@ while IFS= read -r msg_id; do
   msg_detail=$(docker compose -f "$REPO_ROOT/docker-compose.yml" exec -T smtp \
     wget -qO- "${MAILPIT_API}/message/${msg_id}" 2>/dev/null || echo '{}')
 
-  # Find first local recipient
+  # Find first local recipient using proper JSON To field parsing
   local_user=""
   for email in "${!LOCAL_RECIPIENTS[@]}"; do
-    if echo "$msg_detail" | grep -qi "$email"; then
+    match=$(echo "$msg_detail" | python3 -c "
+import sys, json
+try:
+    m = json.load(sys.stdin)
+    to_list = m.get('To', [])
+    for r in to_list:
+        if r.get('Address', '') == '$email':
+            print('match')
+            break
+except: pass
+" 2>/dev/null)
+    if [ "$match" = "match" ]; then
       local_user="${LOCAL_RECIPIENTS[$email]}"
       break
     fi

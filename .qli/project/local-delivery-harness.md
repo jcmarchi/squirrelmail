@@ -62,9 +62,14 @@ Delivery state tracked in `docker/tools/.local-delivery-state` (line-separated M
 | Raw message retrieval | ✅ `GET /api/v1/message/{ID}/raw` returns RFC822 |
 | testuser → devbox send | ✅ SquirrelMail compose/send succeeds |
 | Delivery to devbox INBOX | ✅ Message appears in devbox mailbox |
-| Idempotent second run | ✅ Skipped 1 duplicate, 0 delivered |
+| devbox → testuser reply | ✅ SquirrelMail compose/send succeeds |
+| Delivery to testuser INBOX | ✅ Reply appears in testuser mailbox |
+| Idempotent second run | ✅ Skipped all duplicates, 0 delivered |
+| Third run (all dup) | ✅ 2 inspected, 2 skipped, 0 delivered |
 | Non-local recipient skipped | ✅ Only local recipients delivered |
 | Ownership preserved | ✅ dovecot:dovecot |
+| Recipient matching | ✅ Proper To: field JSON parsing (not grep) |
+| Python3 dependency | ✅ Python 3.12.3 available (DevBox system dependency) |
 | No public exposure | ✅ Mailpit API internal only |
 
 ## 9. Risks and Limitations
