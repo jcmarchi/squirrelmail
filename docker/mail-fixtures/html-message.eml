@@ -1,0 +1,21 @@
+From: sender@devbox.local
+To: testuser@devbox.local
+Subject: [SMQ Fixture] HTML Message
+Date: Thu, 03 Jul 2026 10:01:00 +0000
+Message-ID: <smq-fixture-html-001@devbox.local>
+Content-Type: text/html; charset=UTF-8
+
+<!DOCTYPE html>
+<html>
+<body>
+<h1>HTML Fixture Message</h1>
+<p>This is an <strong>HTML</strong> fixture message for SquirrelMail DevBox testing.</p>
+<p>It contains <em>formatted</em> content to verify HTML rendering.</p>
+<ul>
+  <li>Item one</li>
+  <li>Item two</li>
+  <li>Item three</li>
+</ul>
+<p>No sensitive data.</p>
+</body>
+</html>

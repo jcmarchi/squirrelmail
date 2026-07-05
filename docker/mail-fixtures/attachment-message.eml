@@ -1,0 +1,22 @@
+From: sender@devbox.local
+To: testuser@devbox.local
+Subject: [SMQ Fixture] Message with Attachment
+Date: Thu, 03 Jul 2026 10:03:00 +0000
+Message-ID: <smq-fixture-attachment-001@devbox.local>
+Content-Type: multipart/mixed; boundary="smq-fixture-boundary-002"
+
+--smq-fixture-boundary-002
+Content-Type: text/plain; charset=UTF-8
+
+This fixture message has a text attachment.
+
+No sensitive data.
+
+--smq-fixture-boundary-002
+Content-Type: text/plain; charset=UTF-8; name="fixture-attachment.txt"
+Content-Disposition: attachment; filename="fixture-attachment.txt"
+Content-Transfer-Encoding: base64
+
+VGhpcyBpcyBhIGZpeHR1cmUgYXR0YWNobWVudCBmb3IgU3F1aXJyZWxNYWlsIERldkJveCB0ZXN0aW5nLgpJdCBjb250YWlucyBvbmx5IHRlc3QgZGF0YS4KTm8gc2Vuc2l0aXZlIGluZm9ybWF0aW9uLgo=
+
+--smq-fixture-boundary-002--
