@@ -65,26 +65,9 @@ do_hook('login_cookie', $null);
 
 $loginname_value = (sqGetGlobalVar('loginname', $loginname) ? sm_encode_html_special_chars($loginname) : '');
 
-//FIXME: should be part of the template, not the core!
-/* Output the javascript onload function. */
-$header = "<script type=\"text/javascript\">\n" .
-          "<!--\n".
-          "  var alreadyFocused = false;\n".
-          "  function squirrelmail_loginpage_onload() {\n".
-          "    if (alreadyFocused) return;\n".
-          "    var textElements = 0; var i = 0;\n".
-          "    for (i = 0; i < document.login_form.elements.length; i++) {\n".
-          "      if (document.login_form.elements[i].type == \"text\" || document.login_form.elements[i].type == \"password\") {\n".
-          "        textElements++;\n".
-          "        if (textElements == " . (isset($loginname) ? 2 : 1) . ") {\n".
-          "          document.login_form.elements[i].focus();\n".
-          "          break;\n".
-          "        }\n".
-          "      }\n".
-          "    }\n".
-          "  }\n".
-          "// -->\n".
-          "</script>\n";
+//FIXME: should be part of the template, not the core! -- now isolated in sqm_login_build_onload_script()
+$header = sqm_login_build_onload_script($loginname);
+
 global $theme, $theme_default;
 if ($theme !== null && in_array($theme_default, $theme) && @file_exists($theme[$theme_default]['PATH']))
    @include ($theme[$theme_default]['PATH']);
@@ -166,3 +149,36 @@ do_hook('login_bottom', $null);
 $oErrorHandler->setDelayedErrors(false);
 
 $oTemplate->display('footer.tpl');
+
+/**
+ * Build the login-page onload JavaScript header.
+ *
+ * Isolated from inline construction per modernization seam map (PR #13).
+ * Preserves identical behavior: focus target count depends on whether
+ * $loginname is set (2 if set, 1 otherwise). The //FIXME comment in the
+ * original inline code indicated this should be in the template layer.
+ *
+ * @param string|null $loginname pre-filled username, or null
+ * @return string complete script element for the login page header
+ */
+function sqm_login_build_onload_script($loginname) {
+    $focus_count = isset($loginname) ? 2 : 1;
+    return "<script type=\"text/javascript\">\n"
+         . "<!--\n"
+         . "  var alreadyFocused = false;\n"
+         . "  function squirrelmail_loginpage_onload() {\n"
+         . "    if (alreadyFocused) return;\n"
+         . "    var textElements = 0; var i = 0;\n"
+         . "    for (i = 0; i < document.login_form.elements.length; i++) {\n"
+         . "      if (document.login_form.elements[i].type == \"text\" || document.login_form.elements[i].type == \"password\") {\n"
+         . "        textElements++;\n"
+         . "        if (textElements == " . $focus_count . ") {\n"
+         . "          document.login_form.elements[i].focus();\n"
+         . "          break;\n"
+         . "        }\n"
+         . "      }\n"
+         . "    }\n"
+         . "  }\n"
+         . "// -->\n"
+         . "</script>\n";
+}

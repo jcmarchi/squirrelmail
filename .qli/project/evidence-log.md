@@ -73,3 +73,50 @@ No. Read-only discovery pass. Zero application source files modified.
 **Next approved slice:**
 `spine-planning` — Foundation Spine planning based on adoption intake and risk map.
 
+---
+
+### `2026-07-04` — `modernization-login-seam-001` — `Login Page Presentation Seam Extraction`
+
+**Objective:**
+Extract the inline JavaScript onload construction from `src/login.php` into an isolated function `sqm_login_build_onload_script()`. First modernization slice per source seam map (Section 1: Login Page Presentation).
+
+**Product behavior changed:**
+No. Behavior-preserving refactor. Login page renders identical HTML/JS. All CSS and template rendering untouched.
+
+**Foundation coverage:**
+
+| Foundation | Status | Evidence |
+|---|---|---|
+| Core/ACD | started | First seam extracted. Function isolation proven. |
+| UI/UX | deferred | Frameset UI preserved. |
+| DATA | not_started | No data changes. |
+| API | not_applicable | No API surface. |
+| ACL | not_started | No ACL changes. |
+| Runtime | partial | DevBox validated. Apache PHP 8.3 passes syntax check. |
+| Testing | not_started | Manual browser validation only. |
+| Observability | deferred | No changes. |
+| Delivery | partial | Unchanged. |
+| Security | not_started | No auth/session/password/IMAP changes. |
+
+**Validation:**
+
+- Static/read-only checks: PHP lint clean (`php -l` on src/login.php)
+- Focused automated tests: n/a (no test suite)
+- Human smoke path:
+  - T1 (Login page render): ✅ HTTP 200, login form renders at https://squirrelmail.qlidemo.com/
+  - T2 (Login + mailbox): ✅ testuser/testpass authenticates, webmail.php loads, frameset renders
+  - T16 (Configtest blocked): ✅ HTTP 200 returned
+- Full regression: n/a
+- Tests not run and why: No test suite exists (risk R10)
+
+**Files changed:**
+
+- `src/login.php` — Inline JS extracted to `sqm_login_build_onload_script()` function
+
+**Forbidden files NOT changed:**
+- `src/redirect.php`, `src/webmail.php`, `src/right_main.php`, `src/read_body.php`, `src/compose.php` — untouched
+- `include/`, `functions/`, `class/`, `plugins/`, `themes/`, `config/`, `docker/` — untouched
+
+**Next approved slice:**
+TBD — review source seam map for next lowest-risk extraction.
+
