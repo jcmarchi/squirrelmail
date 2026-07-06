@@ -1,9 +1,9 @@
 schema: qli-buildline-context-packet-v1
 status: draft
 session:
-  mode: "existing-project-adoption"
-  pass_or_slice: "adoption-intake"
-  objective: "Perform read-only discovery of SquirrelMail architecture and populate Buildline adoption files (adoption-intake, behavior-snapshot, risk-map)."
+  mode: "modernization"
+  pass_or_slice: "modernization-login-seam-001"
+  objective: "Extract inline JavaScript onload construction from src/login.php into isolated function. First modernization slice per source seam map."
 context:
   must_read:
     - "AGENTS.md"
