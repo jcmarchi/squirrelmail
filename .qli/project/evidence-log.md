@@ -105,7 +105,7 @@ No. Behavior-preserving refactor. Login page renders identical HTML/JS. All CSS 
 - Human smoke path:
   - T1 (Login page render): ✅ HTTP 200, login form renders at https://squirrelmail.qlidemo.com/
   - T2 (Login + mailbox): ✅ testuser/testpass authenticates, webmail.php loads, frameset renders
-  - T16 (Configtest blocked): ✅ HTTP 200 returned
+  - T16 (Configtest blocked): ✅ Configtest is blocked externally (`$allow_remote_configtest=false`) and exposes no diagnostics. Returns generic error page only.
 - Full regression: n/a
 - Tests not run and why: No test suite exists (risk R10)
 

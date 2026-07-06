@@ -66,7 +66,7 @@ do_hook('login_cookie', $null);
 $loginname_value = (sqGetGlobalVar('loginname', $loginname) ? sm_encode_html_special_chars($loginname) : '');
 
 //FIXME: should be part of the template, not the core! -- now isolated in sqm_login_build_onload_script()
-$header = sqm_login_build_onload_script($loginname);
+$header = sqm_login_build_onload_script(isset($loginname));
 
 global $theme, $theme_default;
 if ($theme !== null && in_array($theme_default, $theme) && @file_exists($theme[$theme_default]['PATH']))
@@ -153,16 +153,18 @@ $oTemplate->display('footer.tpl');
 /**
  * Build the login-page onload JavaScript header.
  *
- * Isolated from inline construction per modernization seam map (PR #13).
+ * Isolated from inline construction per modernization seam map (PR #14).
  * Preserves identical behavior: focus target count depends on whether
- * $loginname is set (2 if set, 1 otherwise). The //FIXME comment in the
- * original inline code indicated this should be in the template layer.
+ * $loginname was set at the call site (2 if set, 1 otherwise).
  *
- * @param string|null $loginname pre-filled username, or null
+ * Accepts a boolean to avoid passing a potentially-undefined variable
+ * and thus preserve the original isset($loginname) guard semantics.
+ *
+ * @param bool $has_loginname whether a pre-filled username is available
  * @return string complete script element for the login page header
  */
-function sqm_login_build_onload_script($loginname) {
-    $focus_count = isset($loginname) ? 2 : 1;
+function sqm_login_build_onload_script($has_loginname) {
+    $focus_count = $has_loginname ? 2 : 1;
     return "<script type=\"text/javascript\">\n"
          . "<!--\n"
          . "  var alreadyFocused = false;\n"
