@@ -211,25 +211,27 @@ These files should be read but not modified in early modernization:
 
 | File | Modernization Target | Approach |
 |---|---|---|
-| `include/init.php` | Bootstrap consolidation | Extract config loading, session setup |
-| `src/login.php` | Login form separation | Separate HTML from logic |
-| `src/redirect.php` | Auth flow isolation | Extract auth to discrete module |
-| `src/right_main.php` | Message list rendering | Separate data from presentation |
-| `functions/mailbox_display.php` | Mailbox display logic | Separate IMAP data fetching from HTML |
-| `functions/page_header.php` | HTML header generation | Centralize header/footer |
-| `functions/html.php` | HTML generation | Replace inline HTML with template calls |
-| `functions/global.php` | Session/input handling | Wrap session behind interface |
+| `src/login.php` | Login page presentation | Extract HTML structure from PHP logic |
 
 ## 10. Files Explicitly Excluded from First Modernization Slice
 
 | File | Reason |
 |---|---|
-| `class/mime.class.php` | Critical MIME parser, frozen |
-| `functions/imap_general.php` | Critical IMAP client, frozen |
-| `functions/compose.php` | SMTP send logic, depends on IMAP auth |
-| `functions/imap_*.php` | IMAP protocol layer, frozen |
-| `functions/auth.php` | Password handling, frozen |
-| `functions/plugin.php` | Hook system, frozen |
+| `include/init.php` | Bootstrap — deferred (config container, session setup) |
+| `src/redirect.php` | Auth flow — deferred (critical IMAP login path) |
+| `src/right_main.php` | Message list — deferred (data/presentation separation) |
+| `src/compose.php` | Compose/send — deferred |
+| `functions/mailbox_display.php` | Mailbox display — deferred |
+| `functions/page_header.php` | HTML header — deferred |
+| `functions/html.php` | HTML helpers — deferred |
+| `functions/global.php` | Session/input — deferred |
+| `class/mime.class.php` | Critical MIME parser — frozen |
+| `functions/imap_general.php` | Critical IMAP client — frozen |
+| `functions/compose.php` | SMTP send logic — frozen |
+| `functions/imap_*.php` | IMAP protocol layer — frozen |
+| `functions/auth.php` | Password handling — frozen |
+| `functions/plugin.php` | Hook system — frozen |
+| `functions/prefs.php` | File-based preferences — frozen |
 | `config/config_default.php` | Frozen defaults |
 | `plugins/**` | All 18 plugins excluded |
 | `themes/**` | Theme files excluded |
@@ -237,54 +239,74 @@ These files should be read but not modified in early modernization:
 
 ## 11. Recommended First Modernization Slice
 
-**Title**: Login and Mailbox Bootstrap Seam Isolation
+**Title**: Login Page Presentation Seam Extraction
 
 **Scope**:
-- Extract config loading from `include/init.php` into a `ConfigContainer`
-- Separate login form HTML from `src/login.php` into a template
-- Isolate auth flow in `src/redirect.php` behind an interface
-- Separate message list data fetching from HTML rendering in `src/right_main.php`
-- Centralize page header/footer in `functions/page_header.php`
+- Observe `src/login.php` only.
+- Extract or isolate only login-page presentation structure in the smallest safe way that preserves all behavior.
+- Preserve: form field names (`login_username`, `secretkey`), POST target (`src/redirect.php`), JavaScript onload focus logic, language detection, theme loading, hook calls (`do_hook('login_cookie')`, etc.), IMAP LOGINDISABLED check, error box display, template footer output, localization (`set_up_language()`, `_()` calls), CSRF/session cookie behavior.
+- Do not change authentication behavior.
+- Do not change `src/redirect.php`.
+- Do not change IMAP login.
+- Do not change session handling.
+- Do not change password handling.
+- Do not change mailbox rendering.
+- Do not change compose/send.
+- Do not change config loading.
+- Do not introduce a config container.
+- Do not introduce new dependencies.
 
-**Exclusions**: IMAP client, MIME parser, SMTP send, plugin hooks, password handling, file-based preferences.
-
-**Validation**: Rerun T1-T4, T11-T13 from the acceptance matrix after the slice.
+**Why this slice**:
+- It is a visible, user-facing page.
+- It is small — changes are contained to one file's presentation structure.
+- It is testable with a single acceptance test: T1 Login.
+- It creates the first modernization seam (UI/presentation separation) without touching IMAP, authentication, session, or core mail behavior.
+- It proves the Buildline modernization model on the smallest safe surface.
 
 ## 12. Acceptance Criteria for First Modernization Slice
 
-1. Login flow works identically (T1 PASS)
-2. Mailbox renders identically (T2 PASS)
-3. Fixture messages visible (T3-T6 PASS)
-4. No regression in config loading (DevBox config still applies)
-5. No new dependencies introduced
-6. No behavior change in excluded files
-7. DevBox runtime starts and smoke-checks pass
+1. T1 Login: must pass (login page renders, form works, redirect behaves identically)
+2. T2 Mailbox render: must still pass after login
+3. T3-T6 fixture reads: should still pass if login enters mailbox normally
+4. T7-T9: should remain pass if core flow is smoke-checked
+5. T16 Configtest blocked: must remain pass
+6. No new dependencies introduced
+7. No behavior change in excluded files
+8. DevBox runtime starts and smoke-checks pass
+9. Do not use T10-T15 as acceptance criteria (blocked by browser automation per PR #12)
 
 ## 13. Validation Path Using Existing Baseline
 
 ```bash
-# Pre-slice baseline
 docker compose up -d
 ./docker/tools/reset-mail-fixtures.sh
 ./docker/tools/seed-mail-fixtures.sh
 
-# Run acceptance tests T1-T6, T16
-# Compare with pre-slice behavior
+# Pre-slice: verify T1-T6, T16 pass
+# Post-slice: verify identical behavior
 
-# Run delivery harness for T7-T9
-./docker/tools/deliver-mailpit-to-maildir.sh
+# T1: Login page renders and form submits correctly
+# T2: Mailbox renders after login
+# T3-T6: Fixture messages readable
+# T16: Configtest blocked externally
 ```
 
 ## 14. Deferrals
 
 | Deferral | Reason |
 |---|---|
-| IMAP client refactoring | Critical protocol layer, frozen until characterization tests exist |
-| MIME parser refactoring | ~3100 lines with 20 years of edge case handling |
-| Filesystem pref migration | Requires abstraction layer and data migration tooling |
-| UI modernization (frameset → responsive) | Separate pass, requires full UI redesign |
-| Plugin API changes | 18 plugins depend on current hook signatures |
-| SMTP layer refactoring | Depends on IMAP auth flow for password reuse |
-| Theme system overhaul | Separate UI pass |
-| i18n system replacement | Current gettext wrappers are functional |
-| Database backend migration | Zero-production-change, separate pass |
+| Config container extraction | Deferred. Keep `include/init.php` as-is for first slice. |
+| Auth interface extraction | Deferred. `src/redirect.php` and `auth.php` frozen. |
+| Message list separation | Deferred. `src/right_main.php` and `mailbox_display.php` frozen. |
+| Header/footer centralization | Deferred. `functions/page_header.php` frozen. |
+| HTML helper replacement | Deferred. `functions/html.php` frozen. |
+| Session/input wrapper | Deferred. `functions/global.php` frozen. |
+| IMAP client refactoring | Deferred. Critical protocol layer, frozen. |
+| MIME parser refactoring | Deferred. ~3100 lines with 20 years of edge case handling. |
+| Filesystem pref migration | Deferred. Requires abstraction layer and data migration tooling. |
+| UI modernization (frameset → responsive) | Deferred. Separate pass, requires full UI redesign. |
+| Plugin API changes | Deferred. 18 plugins depend on current hook signatures. |
+| SMTP layer refactoring | Deferred. Depends on IMAP auth flow for password reuse. |
+| Theme system overhaul | Deferred. Separate UI pass. |
+| i18n system replacement | Deferred. Current gettext wrappers are functional. |
+| Database backend migration | Deferred. Zero-production-change, separate pass. |
